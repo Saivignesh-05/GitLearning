@@ -1,1 +1,3 @@
-Trying the fast forward merge
+Adding new content after the merge to master
+The old line has been erased 
+This line added during the git stash testing

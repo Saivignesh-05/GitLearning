@@ -78,15 +78,22 @@
     - --staged/cached: Shows difference b/w files **Staged** and **Last Commit**
     - git diff `branch1..branch2` OR git diff branch1 branch2 (Both produce same results)
     - git diff `commit_id-1..commit_id-2` OR git diff commit_id-1 commit_id-2
+- Example of git diff ![alt text](image-5.png)
+- Note that --- and +++ doesnt mean Addition or deletion from file. In git diff, it actually denotes the `Block of code from the respective 
+files`
+- **For example**:  -Trying the fast forward merge is the block from file a/ffw1
 ### PUSH
 - Push the commited code to the remote Repo
 - Requests for Username and PAT (Personal Authentication Token)
+- Example snip of a git push
+![alt text](image-4.png)
 
 ### LOG
 - Shows the previous commited versions of the Repository
 - Includes Author,Date, Commit-id
 - FLAGS
-    - --oneline : Shows a simplified version
+    - --oneline : Shows a simplified version ![alt text](image-3.png)
+
 
 ## git branch
 - Shows where the **HEAD** is pointing
@@ -97,6 +104,9 @@
 
     ### git branch `-d` branch-name 
     - Deletes the specified Branch
+- Example branching condition
+    - FFW Merge ![alt text](image-2.png)
+    - Not FFW merge![alt text](image-1.png)
 
 ## git checkout `branch-name`
 - Moves the HEAD to branch-name mentioned
