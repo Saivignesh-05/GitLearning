@@ -13,9 +13,13 @@
             
             *** search ">code" -> Install 'code' command in path ***
 
+    > git config --global init.defaultBranch 'master' (can also be main)
+
     > git config --global core.autocrlf input   // Use true on Windows
 
-    To Check settings: git config --global -e
+    To Check settings: 
+        1. git config --global -e 
+        2. In root: .gitconfig File
 ## To Setup shortcuts for git commands
     git config --global alias.<shortcut> <command>
     Example : alias.st status
@@ -58,34 +62,62 @@
 ### PULL
 - Update the local repo with the Remote Repository
 - helps stay in the latest version of the Repo
-### git commit
+### COMMIT
 - Save a snapshot of the files **staged**
+- Opens the COMMIT_EDITMSG file in the **.git Folder** in the preferred Editor
 - FLAGS
     - -m: **Commit message directly as cmd argument**
     - -am: **Add all files and commit them**
-### git status
+### STATUS
 - Shows the full status of the local directory (working tree information)
 - FLAGS
-    - git status -s: **short style status info**
-### git diff
+    - -s: **short style status info**
+### DIFF
 - Shows difference b/w files **Unstaged** and **Last Commit**
 - FLAGS
     - --staged/cached: Shows difference b/w files **Staged** and **Last Commit**
-### git push
+    - git diff `branch1..branch2` OR git diff branch1 branch2 (Both produce same results)
+    - git diff `commit_id-1..commit_id-2` OR git diff commit_id-1 commit_id-2
+### PUSH
 - Push the commited code to the remote Repo
 - Requests for Username and PAT (Personal Authentication Token)
 
-### git log
+### LOG
 - Shows the previous commited versions of the Repository
 - Includes Author,Date, Commit-id
 - FLAGS
     - --oneline : Shows a simplified version
 
-git branch
-git checkout
+## git branch
+- Shows where the **HEAD** is pointing
+- This HEAD can be seen inside .git folder
+
+    ### git branch `branch-name`
+    - Creates a new timeline from the current Branch
+
+    ### git branch `-d` branch-name 
+    - Deletes the specified Branch
+
+## git checkout `branch-name`
+- Moves the HEAD to branch-name mentioned
+- Alias to checkout is `switch`
+- FLAGS
+    - git switch -c new-branch : **Creates the branch and Switches**
+    - git checkout -b new-branch : Same as above
+- ** commit before switching a branch
+
+## git merge
+- Three types of Merge exists
+    1. Fast forward merge
+        - This is where the master does no commit
+        - The branch has CHANGES
+        - Since the Master Didnt move at all, We fast forward Master to the new HEAD
+    2. Not a fast forward
+        - The master and branch have done some commits of their own
+        - But the commits dont conflict (Not of SAME FILE)
+    3. Conflict Merge
 git stash
 git fetch
-git merge
 git rebase
 git cherry-pick
 git reset
@@ -122,3 +154,8 @@ git tag
 - File: test.txt
 - Directory: dir1/      **remember to use fwd-slash
 - Look for gitignore generator. Has templates for different programming languages
+
+## Commit - Behind the scenes
+![alt text](image.png)
+- First Parent points to NULL
+- The Child version's Hash is generated using the Parent's information
