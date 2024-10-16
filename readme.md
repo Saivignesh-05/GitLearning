@@ -59,15 +59,26 @@
 - to **UNSTAGE** files 
 - git restore --staged **filename1** ... 
 
+## git fetch
+- Gets the INFO from REMOTE to the LOCAL repo
+- **DOESNT UPDATE THE WORKING AREA yet**
+
 ### PULL
 - Update the local repo with the Remote Repository
+- **Brings the changes DIRECTLY to WORKING AREA!**
 - helps stay in the latest version of the Repo
+- In essence : `PULL = FETCH + MERGE`
+
+
 ### COMMIT
 - Save a snapshot of the files **staged**
 - Opens the COMMIT_EDITMSG file in the **.git Folder** in the preferred Editor
 - FLAGS
     - -m: **Commit message directly as cmd argument**
     - -am: **Add all files and commit them**
+        - The *-am* option `cannot be used` on files newly created.  
+        - It is used for files added earlier but `further changes made` must be added and committed simultaneously!
+        - So for a NEW FILE, first use `git add` ONLY
 ### STATUS
 - Shows the full status of the local directory (working tree information)
 - FLAGS
@@ -85,35 +96,58 @@ files`
 ### PUSH
 - Push the commited code to the remote Repo
 - Requests for Username and PAT (Personal Authentication Token)
+<<<<<<< HEAD
 - Example snip of a git push
 ![alt text](image-4.png)
+=======
+- We can also use SSH keys
+- FLAGS
+    - -u remote-name local-branch-name : Sets an upstream by linking the remote and local branch. This allows git push to understand where to push in the FUTURE
+>>>>>>> 951b7e5 (Almost Final commit)
 
 ### LOG
 - Shows the previous commited versions of the Repository
 - Includes Author,Date, Commit-id
 - FLAGS
+<<<<<<< HEAD
     - --oneline : Shows a simplified version ![alt text](image-3.png)
 
+=======
+    - --oneline : Shows a simplified version
+- SUBCOMMAND
+    - git log $branch-name : **Shows log of that particular branch**
+>>>>>>> 951b7e5 (Almost Final commit)
 
 ## git branch
 - Shows where the **HEAD** is pointing
 - This HEAD can be seen inside .git folder
 
     ### git branch `branch-name`
-    - Creates a new timeline from the current Branch
+    - **Creates** a new timeline from the current Branch
 
     ### git branch `-d` branch-name 
+<<<<<<< HEAD
     - Deletes the specified Branch
 - Example branching condition
     - FFW Merge ![alt text](image-2.png)
     - Not FFW merge![alt text](image-1.png)
+=======
+    - **Deletes** the specified Branch
+
+    ### git branch `-M` branch-name
+    - **Renames** the current branch name to the specified name
+>>>>>>> 951b7e5 (Almost Final commit)
 
 ## git checkout `branch-name`
 - Moves the HEAD to branch-name mentioned
 - Alias to checkout is `switch`
 - FLAGS
-    - git switch -c new-branch : **Creates the branch and Switches**
-    - git checkout -b new-branch : Same as above
+    - git switch -c new-branch <br> **Creates the branch and Switches**
+    - git checkout -b new-branch <br> Same as above
+    - git checkout $HASH-ID <br> **Detaches HEAD**. To re-attach use git checkout main
+    - git checkout HEAD~2 <br> **Moves two COMMITS `Behind`
+- SUBCOMMAND
+    - git checkout $hashid  <br>
 - ** commit before switching a branch
 
 ## git merge
@@ -126,13 +160,54 @@ files`
         - The master and branch have done some commits of their own
         - But the commits dont conflict (Not of SAME FILE)
     3. Conflict Merge
-git stash
-git fetch
-git rebase
-git cherry-pick
-git reset
-git tag
+## git stash
+- Lets say we create a main repo, work and commit some changes
+- Now switch to another branch and work such that there is `conflicting changes`
+- Now without `committing` (even adding the file won't suffice), we `cannot checkout` to another branch
+- ![alt text](image-2.png)
+- During this case, we use **STASH**. This locally saves the changes
+- SUBCOMMANDS
+    - git stash list <br>        **Lists all shashed worked**
+    - git stash:-   <br>           **stores the unsaved work**
+    - git stash pop:-          **Restores the unsaved work**
+    - git stash apply stash@{number}. Example BELOW:
 
+        ![alt text](image-3.png)
+
+- NOTE: git stash pop can be POPPED into `ANY OTHER BRANCH`. From BRANCH-1 I can stash and Pop it into BRANCH-2!!!
+
+## git restore
+- Used to restore a file to its previous state
+
+## git rebase
+`NEVER RUN THIS FROM THE MAIN BRANCH`
+- It is a MERGE command, only that the branch is fully detached and planted to MASTER
+- This eliminates unnecessary messages like **Merge branch to master**
+- Conflicts occur and must be resolved like in MERGE COMMAND
+    - After resolving conflict, must `ADD the file` then do `git rebase --continue`
+- MERGES into `SINGLE TIMELINE`
+- ![alt text](image-4.png)
+
+## TAG
+- Prints the tags assigned for particular commit-ids
+- Useful when versioning the code. Makes it easier to go back to prev versions using a TAG
+- TAG is better to use than HASH-ID
+- USAGE : 
+    - git tag "tag_name" `(DOESN'T ALLOW SPACES)`       **Tags the Current Branch**
+    - git tag "tag_name" $HASH-ID
+    - git tag "tag_name" HEAD~2
+- EXAMPLE <br>![alt text](image-6.png)
+
+
+
+## CHERRY-PICK
+- Similar to MERGE and REBASE
+- Rather than merging the ENTIRE COMMIT TIMELINE, picks commits which should MERGE
+- USAGE: git cherry-pick $hash-id-1 $hash-id-2 ... `(ORDER MATTERS)`
+- Creates new commits on the current branch for the `INCOMING COMMITS`.
+- ![alt text](image-5.png)
+
+## RESET
 
 ## GIT WORKING
 - Each commit create a **complete snapshot** of the project
