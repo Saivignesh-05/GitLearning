@@ -96,27 +96,21 @@ files`
 ### PUSH
 - Push the commited code to the remote Repo
 - Requests for Username and PAT (Personal Authentication Token)
-<<<<<<< HEAD
 - Example snip of a git push
 ![alt text](image-4.png)
-=======
 - We can also use SSH keys
 - FLAGS
     - -u remote-name local-branch-name : Sets an upstream by linking the remote and local branch. This allows git push to understand where to push in the FUTURE
->>>>>>> 951b7e5 (Almost Final commit)
 
 ### LOG
 - Shows the previous commited versions of the Repository
 - Includes Author,Date, Commit-id
 - FLAGS
-<<<<<<< HEAD
     - --oneline : Shows a simplified version ![alt text](image-3.png)
 
-=======
-    - --oneline : Shows a simplified version
 - SUBCOMMAND
     - git log $branch-name : **Shows log of that particular branch**
->>>>>>> 951b7e5 (Almost Final commit)
+
 
 ## git branch
 - Shows where the **HEAD** is pointing
@@ -126,17 +120,14 @@ files`
     - **Creates** a new timeline from the current Branch
 
     ### git branch `-d` branch-name 
-<<<<<<< HEAD
     - Deletes the specified Branch
 - Example branching condition
     - FFW Merge ![alt text](image-2.png)
     - Not FFW merge![alt text](image-1.png)
-=======
     - **Deletes** the specified Branch
 
     ### git branch `-M` branch-name
     - **Renames** the current branch name to the specified name
->>>>>>> 951b7e5 (Almost Final commit)
 
 ## git checkout `branch-name`
 - Moves the HEAD to branch-name mentioned
